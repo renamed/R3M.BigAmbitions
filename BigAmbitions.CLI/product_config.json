@@ -1,0 +1,272 @@
+[
+  {
+    "Id": 1,
+    "name": "Arty Fish Phone",
+    "qti_per_box": 24
+  },
+  {
+    "Id": 2,
+    "name": "Arty Fish Smartwatch",
+    "qti_per_box": 32
+  },
+  {
+    "Id": 3,
+    "name": "Bag of Apples",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 4,
+    "name": "Bag of Bananas",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 5,
+    "name": "Bag of Carrots",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 6,
+    "name": "Bag of Lettuce",
+    "qti_per_box": 150
+  },
+  {
+    "Id": 7,
+    "name": "Bag of Pears",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 8,
+    "name": "Bag of Tomatoes",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 9,
+    "name": "Beer",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 10,
+    "name": "Bottle of Wine",
+    "qti_per_box": 25
+  },
+  {
+    "Id": 11,
+    "name": "Burguer",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 12,
+    "name": "Chicken Kabob",
+    "qti_per_box": 200
+  },
+  {
+    "Id": 13,
+    "name": "Cigar",
+    "qti_per_box": 600
+  },
+  {
+    "Id": 14,
+    "name": "Classic Cheap Female",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 15,
+    "name": "Classic Cheap Male",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 16,
+    "name": "Classic Expensive Female",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 17,
+    "name": "Classic Expensive Male",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 18,
+    "name": "Croissant",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 19,
+    "name": "Cup of Coffee",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 20,
+    "name": "Cupcake",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 21,
+    "name": "Donut",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 22,
+    "name": "Flower Cheap",
+    "qti_per_box": 40
+  },
+  {
+    "Id": 23,
+    "name": "Flower Expensive",
+    "qti_per_box": 25
+  },
+  {
+    "Id": 24,
+    "name": "French Fries",
+    "qti_per_box": 400
+  },
+  {
+    "Id": 25,
+    "name": "Fresh Food",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 26,
+    "name": "Frozen Food",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 27,
+    "name": "Gift Cheap",
+    "qti_per_box": 200
+  },
+  {
+    "Id": 28,
+    "name": "Gift Expensive",
+    "qti_per_box": 200
+  },
+  {
+    "Id": 29,
+    "name": "Hair Care Product",
+    "qti_per_box": 40
+  },
+  {
+    "Id": 30,
+    "name": "Hot Dog",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 31,
+    "name": "Ice Cream",
+    "qti_per_box": 300
+  },
+  {
+    "Id": 32,
+    "name": "Jewelry Cheap",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 33,
+    "name": "Jewelry Expensive",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 34,
+    "name": "Limited Edition Book",
+    "qti_per_box": 60
+  },
+  {
+    "Id": 35,
+    "name": "Margarita",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 36,
+    "name": "Martini",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 37,
+    "name": "Modern Cheap Female",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 38,
+    "name": "Modern Cheap Male",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 39,
+    "name": "Modern Expensive Female",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 40,
+    "name": "Modern Expensive Male",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 41,
+    "name": "Motivacional Book",
+    "qti_per_box": 60
+  },
+  {
+    "Id": 42,
+    "name": "Noise Boss Earbuds",
+    "qti_per_box": 32
+  },
+  {
+    "Id": 43,
+    "name": "Novel",
+    "qti_per_box": 60
+  },
+  {
+    "Id": 44,
+    "name": "Paper Bag",
+    "qti_per_box": 1000
+  },
+  {
+    "Id": 45,
+    "name": "Picture Book",
+    "qti_per_box": 90
+  },
+  {
+    "Id": 46,
+    "name": "Pizza",
+    "qti_per_box": 120
+  },
+  {
+    "Id": 47,
+    "name": "Rhythm By Tre Headphones",
+    "qti_per_box": 16
+  },
+  {
+    "Id": 48,
+    "name": "Salad",
+    "qti_per_box": 350
+  },
+  {
+    "Id": 49,
+    "name": "Soda Can",
+    "qti_per_box": 120
+  },
+  {
+    "Id": 50,
+    "name": "Technical Manual",
+    "qti_per_box": 60
+  },
+  {
+    "Id": 51,
+    "name": "Whiskey",
+    "qti_per_box": 50
+  },
+  {
+    "Id": 52,
+    "name": "Youth Novel",
+    "qti_per_box": 90
+  },
+  {
+    "Id": 53,
+    "name": "ZanaMan Phone",
+    "qti_per_box": 24
+  },
+  {
+    "Id": 54,
+    "name": "ZanaMan Smartwatch",
+    "qti_per_box": 32
+  }
+]
