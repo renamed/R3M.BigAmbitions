@@ -1,102 +1,47 @@
-﻿using System.Text.Json;
+﻿using AutoMapper;
+using BigAmbitions.Domain;
+using BigAmbitions.Repository.Contracts;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BigAmbitions.Repository;
-public abstract class BaseRepository<T> : IDisposable, IAsyncDisposable
+public abstract class BaseRepository<TEntity, TDomain>
+    where TEntity : class
 {
-    protected BaseRepository()
+    protected BaseRepository(DbSet<TEntity> entityList, DbContext dbContext, IMapper mapper)
     {
-        //Refresh(GetFileName());
+        EntityList = entityList;
+        DbContext = dbContext;
+        Mapper = mapper;
     }
 
-    public ValueTask AddAsync(T entity)
+    protected readonly DbSet<TEntity> EntityList;
+    protected readonly DbContext DbContext;
+    protected readonly IMapper Mapper;
+
+    public Task AddAsync(TDomain domain)
     {
+        var entity = Mapper.Map<TEntity>(domain);
         EntityList.Add(entity);
-        return ValueTask.CompletedTask;
+        return SaveAsync();
     }
 
-    public ValueTask<T?> GetAsync(Func<T, bool> predicate)
+    public async Task<TDomain?> GetAsync(Expression<Func<TEntity, bool>> predicate)
     {
-        return ValueTask.FromResult(EntityList.FirstOrDefault(predicate));
+        var response = await EntityList.FirstOrDefaultAsync(predicate);
+        return Mapper.Map<TDomain?>(response);
     }
 
-    public ValueTask<IReadOnlyList<T>> ListAsync()
+    public async IAsyncEnumerable<TDomain> ListAsync()
     {
-        IReadOnlyList<T> readOnlyList = new List<T>(EntityList);
-        return ValueTask.FromResult(readOnlyList);
-    }
-
-    protected void Refresh(string fileName)
-    {
-        EnsureDataDirectoryExists();
-
-        var fullFilePath = GetFullFilePath(fileName);
-        if (!File.Exists(fullFilePath)) 
+        await foreach(var currentEntity in EntityList.AsAsyncEnumerable())
         {
-            return;
-        }
-        EntityList = JsonSerializer.Deserialize<List<T>>(File.ReadAllText(fullFilePath)) ?? [];
-    }
-
-    protected void Save(string fileName, List<T> contents)
-    {
-        EnsureDataDirectoryExists();
-        var filePath = GetFullFilePath(fileName);
-        File.WriteAllText(filePath, JsonSerializer.Serialize(contents, new JsonSerializerOptions { WriteIndented = true }));
-    }
-
-    protected ValueTask SaveAsync(string fileName, List<T> contents)
-    {
-        EnsureDataDirectoryExists();
-        var filePath = GetFullFilePath(fileName);
-        return new ValueTask(File.WriteAllTextAsync(filePath, JsonSerializer.Serialize(contents, new JsonSerializerOptions { WriteIndented = true })));
-    }
-
-    protected void EnsureDataDirectoryExists()
-    {
-        string dataFolderPath = GetDataFolderPath();
-
-        if (!Directory.Exists(dataFolderPath))
-        {
-            Directory.CreateDirectory(dataFolderPath);
+            yield return Mapper.Map<TDomain>(currentEntity);
         }
     }
 
-    protected string GetDataFolderPath()
+    public Task SaveAsync()
     {
-        return Environment.CurrentDirectory;
+        return DbContext.SaveChangesAsync();
     }
-
-    protected string GetFullFilePath(string fileName)
-    {
-        return Path.Combine(GetDataFolderPath(), fileName);
-    }
-
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
-
-        if (EntityList.Count == 0)
-        {
-            return;
-        }
-
-        EnsureDataDirectoryExists();
-        Save(GetFileName(), EntityList);
-    }
-
-    public ValueTask DisposeAsync()
-    {
-        GC.SuppressFinalize(this);
-        if (EntityList.Count == 0)
-        {
-            return ValueTask.CompletedTask;
-        }
-
-        EnsureDataDirectoryExists();
-        return SaveAsync(GetFileName(), EntityList);
-    }
-
-    protected abstract string GetFileName();
-
-    protected List<T> EntityList { get; set; } = [];
 }

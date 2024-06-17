@@ -1,14 +1,13 @@
-﻿using BigAmbitions.Domain.Config;
+﻿using AutoMapper;
+using BigAmbitions.Domain.Config;
+using BigAmbitions.Repository.Contexts;
 using BigAmbitions.Repository.Contracts;
+using BigAmbitions.Repository.Entities;
 
 namespace BigAmbitions.Repository;
-public class ProductConfigRepository : BaseRepository<ProductConfig>, IProductConfigRepository
+public class ProductConfigRepository : BaseRepository<ProductConfigEntity, ProductConfig>, IProductConfigRepository
 {
-    protected override string GetFileName()
-        => "product_config.json";
-
-    public ProductConfigRepository()
+    public ProductConfigRepository(BigAmbitionContext dbContext, IMapper mapper) : base(dbContext.ProductConfigs, dbContext, mapper)
     {
-        Refresh(GetFileName());
     }
 }
