@@ -2,7 +2,7 @@
 using BigAmbitions.Domain;
 using BigAmbitions.Repository.Contracts;
 using BigAmbitions.Application.Contracts;
-using BigAmbitions.Repository;
+using BigAmbitions.Application.Extensions;
 
 namespace BigAmbitions.CLI;
 public class AppFacade
@@ -20,7 +20,7 @@ public class AppFacade
 
     public async ValueTask RunAsync()
     {
-        var productsConfig = (await productConfigRepository.ListAsync()).ToDictionary(k => k.Id, v => v);
+        var productsConfig = (await productConfigRepository.ListAsync().ToListAsync()).ToDictionary(k => k.Id, v => v);
 
         string productsMenu = GetProductsMenu(productsConfig);
 
