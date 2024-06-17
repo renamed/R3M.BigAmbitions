@@ -1,0 +1,52 @@
+name: Criar tag com versão dinâmica
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  criar-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Obter versão atual
+        run: |
+          versaoAtual=$(gitversion -b)
+          versaoAtualMajor=$(echo $versaoAtual | cut -d '.' -f 1)
+          versaoAtualMinor=$(echo $versaoAtual | cut -d '.' -f 2)
+          versaoAtualRevision=$(echo $versaoAtual | cut -d '.' -f 3)
+          versaoAtualBuild=$(echo $versaoAtual | cut -d '.' -f 4)
+
+      - name: Incrementar versão
+        run: |
+          novaVersaoMajor=$versaoAtualMajor
+          novaVersaoMinor=$versaoAtualMinor
+          novaVersaoRevision=$versaoAtualRevision
+          novaVersaoBuild=$versaoAtualBuild
+
+          if [ $incrementarMajor = "true" ]; then
+            novaVersaoMajor=$((versaoAtualMajor + 1))
+          fi
+
+          if [ $incrementarMinor = "true" ]; then
+            novaVersaoMinor=$((versaoAtualMinor + 1))
+          fi
+
+          if [ $incrementarRevision = "true" ]; then
+            novaVersaoRevision=$((versaoAtualRevision + 1))
+          fi
+
+          if [ $incrementarMajor = "false" ] && [ $incrementarMinor = "false" ] && [ $incrementarRevision = "false" ]; then
+            novaVersaoBuild=$((versaoAtualBuild + 1))
+          fi
+
+        env:
+          INCREMENT_MAJOR: ${{ env.INCREMENT_MAJOR }}
+          INCREMENT_MINOR: ${{ env.INCREMENT_MINOR }}
+          INCREMENT_REVISION: ${{ env.INCREMENT_REVISION }}
+
+      - name: Criar tag
+        run: |
+          novaVersao="$novaVersaoMajor.$novaVersaoMinor.$novaVersaoRevision.$novaVersaoBuild"
+          git tag $novaVersao
+          git push origin $novaVersao
