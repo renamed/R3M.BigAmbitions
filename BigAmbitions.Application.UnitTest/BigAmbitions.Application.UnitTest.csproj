@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BigAmbitions.Application\BigAmbitions.Application.csproj" />
-    <ProjectReference Include="..\BigAmbitions.CLI\BigAmbitions.CLI.csproj" />
+    <ProjectReference Include="..\BigAmbitions.Domain\BigAmbitions.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

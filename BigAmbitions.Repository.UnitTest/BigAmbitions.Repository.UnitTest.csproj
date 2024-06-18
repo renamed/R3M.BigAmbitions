@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BigAmbitions.Domain\BigAmbitions.Domain.csproj" />
     <ProjectReference Include="..\BigAmbitions.Repository\BigAmbitions.Repository.csproj" />
   </ItemGroup>
 

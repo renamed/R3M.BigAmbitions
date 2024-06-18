@@ -2,10 +2,8 @@
 public class ProductEntity : RegisterEntity
 {
     public required string Name { get; set; }
+    public int QtiPerBox { get; set; }
 
-    public int SoldLast7Days { get; set; }
-
-    public int QtiToBuy { get; set; }
-
-    public int BusinessBoxesNeeded { get; set; }
+    public int BusinessId { get; set; }
+    public BusinessEntity Business { get; set; }
 }

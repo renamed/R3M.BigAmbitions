@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.34909.67
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.CLI", "BigAmbitions.CLI\BigAmbitions.CLI.csproj", "{3260C5B4-61B9-4698-98C2-90E9567E071B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.Domain", "BigAmbitions.Domain\BigAmbitions.Domain.csproj", "{21691F4D-7E9D-46EE-A4BB-AB385E3A9826}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.Application", "BigAmbitions.Application\BigAmbitions.Application.csproj", "{E0F934E5-6FB4-4024-88BC-2AB054DEDB9F}"
@@ -13,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.Repository", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DFC7E3F4-AD73-4208-8A9E-575B0D52FC7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigAmbitions.Application.UnitTest", "BigAmbitions.Application.UnitTest\BigAmbitions.Application.UnitTest.csproj", "{E0EE971B-9B09-4DCD-AD6F-2E71CFADE16A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.Application.UnitTest", "BigAmbitions.Application.UnitTest\BigAmbitions.Application.UnitTest.csproj", "{E0EE971B-9B09-4DCD-AD6F-2E71CFADE16A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigAmbitions.Repository.UnitTest", "BigAmbitions.Repository.UnitTest\BigAmbitions.Repository.UnitTest.csproj", "{0DC4058A-60B2-45EE-95C4-5742A7583E9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.Repository.UnitTest", "BigAmbitions.Repository.UnitTest\BigAmbitions.Repository.UnitTest.csproj", "{0DC4058A-60B2-45EE-95C4-5742A7583E9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigAmbitions.WebApi", "BigAmbitions.WebApi\BigAmbitions.WebApi.csproj", "{C1A62553-94C8-4FAF-809A-6C74238FD975}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3260C5B4-61B9-4698-98C2-90E9567E071B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3260C5B4-61B9-4698-98C2-90E9567E071B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3260C5B4-61B9-4698-98C2-90E9567E071B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3260C5B4-61B9-4698-98C2-90E9567E071B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21691F4D-7E9D-46EE-A4BB-AB385E3A9826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{21691F4D-7E9D-46EE-A4BB-AB385E3A9826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21691F4D-7E9D-46EE-A4BB-AB385E3A9826}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,6 +43,10 @@ Global
 		{0DC4058A-60B2-45EE-95C4-5742A7583E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DC4058A-60B2-45EE-95C4-5742A7583E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DC4058A-60B2-45EE-95C4-5742A7583E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A62553-94C8-4FAF-809A-6C74238FD975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A62553-94C8-4FAF-809A-6C74238FD975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A62553-94C8-4FAF-809A-6C74238FD975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A62553-94C8-4FAF-809A-6C74238FD975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

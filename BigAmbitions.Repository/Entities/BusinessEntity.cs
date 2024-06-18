@@ -5,9 +5,7 @@ public class BusinessEntity : RegisterEntity
 {
     public required string Name { get; set; }
 
-    public int DaysOpened { get; set; }
 
-    public int ShelvesNeeded { get; set; }
-
-    public required IList<Product> Products { get; set; }
+    public int WarehouseId { get; set; }
+    public Warehouse Warehouse { get; set; }
 }

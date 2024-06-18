@@ -1,0 +1,6 @@
+@BigAmbitions.WebApi_HostAddress = http://localhost:5039
+
+GET {{BigAmbitions.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
