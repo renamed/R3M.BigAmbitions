@@ -1,4 +1,5 @@
 ﻿using BigAmbitions.Application.Extensions;
+using BigAmbitions.Repository.Extensions;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -8,7 +9,7 @@ public class IServiceCollectionExtensionsUnitTest
 {
     const string ServiceCollectionNamespace = "BigAmbitions.Application.Contracts";
     private const string AssemblyName = "BigAmbitions.Application";
-
+     
     [Fact]
     public void ShouldRegister_AllApplicationServices()
     {
@@ -17,6 +18,7 @@ public class IServiceCollectionExtensionsUnitTest
 
         // Act
         serviceCollection.RegisterServicesApplication();
+        serviceCollection.RegisterServicesRepository();
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
         // Assert

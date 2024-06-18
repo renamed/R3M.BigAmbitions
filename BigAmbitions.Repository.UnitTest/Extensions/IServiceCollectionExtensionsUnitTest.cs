@@ -5,7 +5,8 @@ using System.Reflection;
 
 namespace BigAmbitions.Application.UnitTest.Extensions;
 public class IServiceCollectionExtensionsUnitTest
-{
+{ 
+
     const string ServiceCollectionNamespace = "BigAmbitions.Repository.Contracts";
     private const string AssemblyName = "BigAmbitions.Repository";
 

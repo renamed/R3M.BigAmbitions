@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace BigAmbitions.Repository.Contexts;
 public sealed class BigAmbitionContext : DbContext
 {
+    public BigAmbitionContext(){}
+    public BigAmbitionContext(DbContextOptions<BigAmbitionContext> options) : base(options) { }
+
     public DbSet<BusinessEntity> Businesses { get; set; }
     public DbSet<ProductEntity> Products { get; set; }
     public DbSet<ProductConfigEntity> ProductConfigs { get; set; }    
