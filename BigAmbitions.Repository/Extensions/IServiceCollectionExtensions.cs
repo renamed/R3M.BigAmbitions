@@ -13,6 +13,7 @@ public static class IServiceCollectionExtensions
             .AddScoped<IBusinessRepository, BusinessRepository>()
             .AddScoped<IProductRepository, ProductRepository>()            
             .AddScoped<IBigAmbitionContext, BigAmbitionContext>()
+            .AddScoped<IWarehouseRepository, WarehouseRepository>()
             .AddDbContext<BigAmbitionContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("BigAmbitions")))
             .AddAutoMapper(Array.Empty<Assembly>());
         

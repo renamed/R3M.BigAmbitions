@@ -1,0 +1,14 @@
+﻿<Window x:Class="WPF.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Insert Warehouse" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="30" Width="100" Name="BtnInsertWarehouse" Click="BtnInsertWarehouse_Click"/>
+        <Button Content="Insert Business" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Height="30" Width="100" Name="BtnInsertBusiness" Click="BtnInsertBusiness_Click"/>
+        <Button Content="Insert Product" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="30" Width="100" Name="BtnInsertProduct" Click="BtnInsertProduct_Click"/>
+    </Grid>
+</Window>

@@ -1,6 +1,9 @@
 ﻿using BigAmbitions.Repository.Extensions;
 using FluentAssertions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace BigAmbitions.Application.UnitTest.Extensions;
@@ -14,11 +17,22 @@ public class IServiceCollectionExtensionsUnitTest
     public void ShouldRegister_AllRepositoryServices()
     {
         // Arrange
-        IServiceCollection serviceCollection = new ServiceCollection();
+        var host = Host.CreateDefaultBuilder()
+                    .ConfigureAppConfiguration((hostContext, config) =>
+                    {
+                        config.SetBasePath(Directory.GetCurrentDirectory())
+                            .AddJsonFile("appsettings.json", optional: true)
+                            .AddEnvironmentVariables();
+                    })
+                    .ConfigureServices((hostContext, services) =>
+                    {
+                        services.RegisterServicesRepository(hostContext.Configuration);
+                    }).Build();
+
 
         // Act
-        serviceCollection.RegisterServicesRepository();
-        var serviceProvider = serviceCollection.BuildServiceProvider();
+        using var scope = host.Services.CreateScope();
+        var serviceProvider = scope.ServiceProvider;
 
         // Assert
         Assembly assembly = Assembly.Load(AssemblyName);

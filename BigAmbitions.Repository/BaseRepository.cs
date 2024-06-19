@@ -45,6 +45,18 @@ public abstract class BaseRepository<TEntity, TDomain>
         }
     }
 
+    public virtual async Task DeleteAsync(int id)
+    {
+        var obj = await EntityList.FindAsync(id);
+        if (obj is null)
+        {
+            return;
+        }
+
+        EntityList.Remove(obj);
+        await SaveAsync();
+    }
+
     public virtual Task SaveAsync()
     {
         return DbContext.GetDbContext().SaveChangesAsync();
