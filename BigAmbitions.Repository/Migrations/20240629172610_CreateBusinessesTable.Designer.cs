@@ -2,6 +2,7 @@
 using BigAmbitions.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BigAmbitions.Repository.Migrations
 {
     [DbContext(typeof(BigAmbitionContext))]
-    partial class BigAmbitionContextModelSnapshot : ModelSnapshot
+    [Migration("20240629172610_CreateBusinessesTable")]
+    partial class CreateBusinessesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,17 +35,12 @@ namespace BigAmbitions.Repository.Migrations
                     b.Property<decimal>("DailyRent")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("GameId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GameId");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -77,38 +75,6 @@ namespace BigAmbitions.Repository.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Game", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Games");
-                });
-
-            modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
-                {
-                    b.HasOne("BigAmbitions.Domain.Game", "Game")
-                        .WithMany("Businesses")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Game");
-                });
-
             modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
                 {
                     b.HasOne("BigAmbitions.Domain.Business", "Business")
@@ -123,11 +89,6 @@ namespace BigAmbitions.Repository.Migrations
             modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
                 {
                     b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("BigAmbitions.Domain.Game", b =>
-                {
-                    b.Navigation("Businesses");
                 });
 #pragma warning restore 612, 618
         }
