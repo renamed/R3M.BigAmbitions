@@ -11,7 +11,7 @@ public static class IServiceCollectionExtensions
     public static IServiceCollection RegisterServicesRepository(this IServiceCollection services, IConfiguration configuration)
         => services            
             .AddScoped<IBigAmbitionContext, BigAmbitionContext>()            
-            .AddDbContext<BigAmbitionContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("BigAmbitions")))
+            .AddDbContext<BigAmbitionContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("BigAmbitions")))
             .AddAutoMapper(Array.Empty<Assembly>());
         
 }
