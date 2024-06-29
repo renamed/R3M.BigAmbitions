@@ -17,5 +17,10 @@
     <ProjectReference Include="..\BigAmbitions.Repository\BigAmbitions.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
 
 </Project>

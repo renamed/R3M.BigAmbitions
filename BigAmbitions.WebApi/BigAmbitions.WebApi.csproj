@@ -11,10 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BigAmbitions.Application\BigAmbitions.Application.csproj" />
-    <ProjectReference Include="..\BigAmbitions.Domain\BigAmbitions.Domain.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
-
+  <ItemGroup>
+    <ProjectReference Include="..\BigAmbitions.Application\BigAmbitions.Application.csproj" />
+    <ProjectReference Include="..\BigAmbitions.Repository\BigAmbitions.Repository.csproj" />
+  </ItemGroup>
 
 </Project>

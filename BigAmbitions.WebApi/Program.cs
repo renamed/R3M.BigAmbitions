@@ -1,23 +1,18 @@
 using BigAmbitions.Application.Extensions;
 using BigAmbitions.Repository.Extensions;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Configuration
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json")
-    .AddEnvironmentVariables();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services
+
+builder.Services    
     .RegisterServicesApplication()
-    .RegisterServicesRepository(builder.Configuration)    
-    .AddAutoMapper(Array.Empty<Assembly>());
+    .RegisterServicesRepository(builder.Configuration);
 
 var app = builder.Build();
 

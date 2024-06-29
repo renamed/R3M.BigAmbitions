@@ -9,11 +9,8 @@ namespace BigAmbitions.Repository.Extensions;
 public static class IServiceCollectionExtensions
 {
     public static IServiceCollection RegisterServicesRepository(this IServiceCollection services, IConfiguration configuration)
-        => services
-            .AddScoped<IBusinessRepository, BusinessRepository>()
-            .AddScoped<IProductRepository, ProductRepository>()            
-            .AddScoped<IBigAmbitionContext, BigAmbitionContext>()
-            .AddScoped<IWarehouseRepository, WarehouseRepository>()
+        => services            
+            .AddScoped<IBigAmbitionContext, BigAmbitionContext>()            
             .AddDbContext<BigAmbitionContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("BigAmbitions")))
             .AddAutoMapper(Array.Empty<Assembly>());
         
