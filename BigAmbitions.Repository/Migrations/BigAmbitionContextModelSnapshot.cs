@@ -7,129 +7,128 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace BigAmbitions.Repository.Migrations
+namespace BigAmbitions.Repository.Migrations;
+
+[DbContext(typeof(BigAmbitionContext))]
+partial class BigAmbitionContextModelSnapshot : ModelSnapshot
 {
-    [DbContext(typeof(BigAmbitionContext))]
-    partial class BigAmbitionContextModelSnapshot : ModelSnapshot
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+        modelBuilder
+            .HasAnnotation("ProductVersion", "8.0.6")
+            .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+        NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+        modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("DailyRent")
-                        .HasColumnType("numeric");
+                b.Property<decimal>("DailyRent")
+                    .HasColumnType("numeric");
 
-                    b.Property<int>("GameId")
-                        .HasColumnType("integer");
+                b.Property<int>("GameId")
+                    .HasColumnType("integer");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("character varying(50)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("GameId");
+                b.HasIndex("GameId");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
+                b.HasIndex("Name")
+                    .IsUnique();
 
-                    b.ToTable("Businesses");
-                });
+                b.ToTable("Businesses");
+            });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+        modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BusinessId")
-                        .HasColumnType("integer");
+                b.Property<int>("BusinessId")
+                    .HasColumnType("integer");
 
-                    b.Property<int>("DailyHoursWork")
-                        .HasColumnType("integer");
+                b.Property<int>("DailyHoursWork")
+                    .HasColumnType("integer");
 
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("numeric");
+                b.Property<decimal>("Salary")
+                    .HasColumnType("numeric");
 
-                    b.Property<int>("WeeklyDaysWork")
-                        .HasColumnType("integer");
+                b.Property<int>("WeeklyDaysWork")
+                    .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BusinessId");
+                b.HasIndex("BusinessId");
 
-                    b.ToTable("Employees");
-                });
+                b.ToTable("Employees");
+            });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Game", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+        modelBuilder.Entity("BigAmbitions.Domain.Game", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("character varying(50)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("Name")
-                        .IsUnique();
+                b.HasIndex("Name")
+                    .IsUnique();
 
-                    b.ToTable("Games");
-                });
+                b.ToTable("Games");
+            });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
-                {
-                    b.HasOne("BigAmbitions.Domain.Game", "Game")
-                        .WithMany("Businesses")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
+            {
+                b.HasOne("BigAmbitions.Domain.Game", "Game")
+                    .WithMany("Businesses")
+                    .HasForeignKey("GameId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Game");
-                });
+                b.Navigation("Game");
+            });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
-                {
-                    b.HasOne("BigAmbitions.Domain.Business", "Business")
-                        .WithMany("Employees")
-                        .HasForeignKey("BusinessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
+            {
+                b.HasOne("BigAmbitions.Domain.Business", "Business")
+                    .WithMany("Employees")
+                    .HasForeignKey("BusinessId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Business");
-                });
+                b.Navigation("Business");
+            });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
-                {
-                    b.Navigation("Employees");
-                });
+        modelBuilder.Entity("BigAmbitions.Domain.Business", b =>
+            {
+                b.Navigation("Employees");
+            });
 
-            modelBuilder.Entity("BigAmbitions.Domain.Game", b =>
-                {
-                    b.Navigation("Businesses");
-                });
+        modelBuilder.Entity("BigAmbitions.Domain.Game", b =>
+            {
+                b.Navigation("Businesses");
+            });
 #pragma warning restore 612, 618
-        }
     }
 }

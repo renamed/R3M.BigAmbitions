@@ -1,34 +1,38 @@
 ﻿using BigAmbitions.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace BigAmbitions.Repository
+namespace BigAmbitions.Repository;
+
+public class AbstractRepository<T>
+    where T : class, IRegister
 {
-    public class AbstractRepository<T>
-        where T : IRegister
+    protected DbContext DbContext { get; init; }
+
+    public AbstractRepository(DbContext dbContext)
     {
-        protected DbContext DbContext { get; init; }
+        DbContext = dbContext;
+    }
 
-        public AbstractRepository(DbContext dbContext)
-        {
-            DbContext = dbContext;
-        }
+    public Task AddAsync(T entity)
+    {
+        DbContext.Add(entity);
+        return DbContext.SaveChangesAsync();
+    }
 
-        public Task AddAsync(T entity)
-        {
-            DbContext.Add(entity);
-            return DbContext.SaveChangesAsync();
-        }
+    public async ValueTask<T?> FindAsync(int id)
+    {
+        return (await DbContext.FindAsync(typeof(T), id)) as T;
+    }
 
-        public Task RemoveAsync(T entity)
-        {
-            DbContext.Remove(entity);
-            return DbContext.SaveChangesAsync();
-        }
+    public Task RemoveAsync(T entity)
+    {
+        DbContext.Remove(entity);
+        return DbContext.SaveChangesAsync();
+    }
 
-        public Task UpdateAsync(T entity)
-        {
-            DbContext.Update(entity);
-            return DbContext.SaveChangesAsync();
-        }
+    public Task UpdateAsync(T entity)
+    {
+        DbContext.Update(entity);
+        return DbContext.SaveChangesAsync();
     }
 }

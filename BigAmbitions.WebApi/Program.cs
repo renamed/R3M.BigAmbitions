@@ -1,5 +1,6 @@
 using BigAmbitions.Application.Extensions;
 using BigAmbitions.Repository.Extensions;
+using BigAmbitions.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services    
+builder.Services
+    .RegisterServicesWebApi()
     .RegisterServicesApplication()
     .RegisterServicesRepository(builder.Configuration);
 
@@ -30,3 +32,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

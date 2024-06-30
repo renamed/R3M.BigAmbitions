@@ -8,44 +8,43 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace BigAmbitions.Repository.Migrations
+namespace BigAmbitions.Repository.Migrations;
+
+[DbContext(typeof(BigAmbitionContext))]
+[Migration("20240629143919_CreateTableEmployees")]
+partial class CreateTableEmployees
 {
-    [DbContext(typeof(BigAmbitionContext))]
-    [Migration("20240629143919_CreateTableEmployees")]
-    partial class CreateTableEmployees
+    /// <inheritdoc />
+    protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+        modelBuilder
+            .HasAnnotation("ProductVersion", "8.0.6")
+            .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+        NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+        modelBuilder.Entity("BigAmbitions.Domain.Employee", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DailyHoursWork")
-                        .HasColumnType("integer");
+                b.Property<int>("DailyHoursWork")
+                    .HasColumnType("integer");
 
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("numeric");
+                b.Property<decimal>("Salary")
+                    .HasColumnType("numeric");
 
-                    b.Property<int>("WeeklyDaysWork")
-                        .HasColumnType("integer");
+                b.Property<int>("WeeklyDaysWork")
+                    .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Employees");
-                });
+                b.ToTable("Employees");
+            });
 #pragma warning restore 612, 618
-        }
     }
 }

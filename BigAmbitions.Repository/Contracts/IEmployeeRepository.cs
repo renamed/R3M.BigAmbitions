@@ -1,11 +1,11 @@
 ﻿using BigAmbitions.Domain;
 
-namespace BigAmbitions.Repository.Contracts
+namespace BigAmbitions.Repository.Contracts;
+
+public interface IEmployeeRepository
 {
-    public interface IEmployeeRepository
-    {
-        Task AddAsync(Employee employee);
-        Task RemoveAsync(Employee employee);
-        Task UpdateAsync(Employee employee);
-    }
+    Task AddAsync(Employee employee);
+    Task RemoveAsync(Employee employee);
+    Task UpdateAsync(Employee employee);
+    ValueTask<Employee?> FindAsync(int id);
 }
